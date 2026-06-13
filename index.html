@@ -73,14 +73,23 @@
             weatherIcon.src = "images/mist.png";
           }
           document.querySelector(".weather").style.display = "block";
+          searchBox.value = "";
         }
       }
       searchBox.addEventListener("keydown", (event) => {
         if (event.key === "Enter") {
+          if (!searchBox.value) {
+            alert("Please enter a city");
+            checkWeather(data.name);
+          }
           checkWeather(searchBox.value);
         }
       });
       searchBtn.addEventListener("click", () => {
+        if (!searchBox.value) {
+          alert("Please enter a city");
+          checkWeather(data.name);
+        }
         checkWeather(searchBox.value);
       });
     </script>
